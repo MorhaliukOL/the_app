@@ -9,6 +9,7 @@ out
 gen
 ### Python template
 # Byte-compiled / optimized / DLL files
+the_app/__pycache__/
 __pycache__/
 *.py[cod]
 *$py.class
