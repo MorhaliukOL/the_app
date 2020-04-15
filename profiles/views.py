@@ -13,6 +13,7 @@ class ProfileListCreateView(ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
+        """Set read only field 'owner' to the logged in user"""
         user = self.request.user
         serializer.save(owner=user)
 
