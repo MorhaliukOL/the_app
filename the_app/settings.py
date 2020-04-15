@@ -26,7 +26,7 @@ load_dotenv(dotenv_path=ENV_PATH)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG_VALUE') == 'True'
 
 ALLOWED_HOSTS = ['prof1le-app.herokuapp.com']
 
