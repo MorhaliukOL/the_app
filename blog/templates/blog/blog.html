@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for post in posts %}
+        <div>
+            <h2 style="text-align:center"><a href="{% url 'view-post' post.id %}">{{ post.title }}</a></h2>
+            <p>{{ post.body }}</p>
+            <p style="float: right">Author: <i>{{ post.author }}</i></p><br><br>
+            <hr>
+        </div>
+    {% endfor %}
+
+{% endblock %}

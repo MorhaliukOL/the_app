@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <h2 style="text-align:center">{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+        <input type="hidden" id="post_id" value="{{ post.id }}">
+        <p style="float: right">Author: <i>{{ post.author }}</i></p><br><br>
+        <hr>
+        <div class="comment">
+            {% for comment in comments %}
+                <p style="color:brown">{{ comment.body }}</p>
+                <p>Said: <b>{{ comment.author }}</b></p>
+            {% endfor %}
+        </div>
+        Add comment
+        <form method="post" id="comment-form">
+            {% csrf_token %}
+            {{ com_form }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+{% endblock content %}
+
+{% block static %}
+    <script src="{% static 'js/comment_ajax.js' %}"></script>
+{% endblock static %}
