@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+
+<style ></style>
+</head>
+<body>
+
+<ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="{% url 'blog' %}">Blog</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'write-post' %}">Write post</a></li>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <!--    LOGOUT    -->
+        <li style="float:right"><a href="{% url 'logout' %}">{{ user.username }}</a></li>
+    {% else %}
+        <li style="float:right"><a href="#about">Register</a></li>
+        <li style="float:right"><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+</ul>
+
+{% block content %}
+{% endblock %}
+
+</body>
+
+{% block static %}
+{% endblock %}
+
+</html>

@@ -14,6 +14,8 @@ import os
 import django_heroku
 from dotenv import load_dotenv
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENV_PATH = BASE_DIR + '/.env'
@@ -34,6 +36,8 @@ ALLOWED_HOSTS = ['prof1le-app.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
+    'courses',
     'profiles',
     'djoser',
     'rest_framework',
@@ -61,7 +65,7 @@ ROOT_URLCONF = 'the_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR + '/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,11 +135,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+LOGIN_REDIRECT_URL = reverse_lazy('blog')
+LOGIN_URL = reverse_lazy('login')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
