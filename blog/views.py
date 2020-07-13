@@ -58,3 +58,7 @@ def view_post(request, pk):
         form = CommentForm()
         context['com_form'] = form
         return render(request, 'blog/view_post.html', context)
+
+
+def vk_api(request):
+    return render(request, 'blog/VkAPI.html')

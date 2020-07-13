@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <h1>Test Vk API</h1>
+
+    <div id="vk_auth"></div>
+
+<script type="text/javascript">
+
+ VK.init({apiId: 7534643});
+
+ VK.Widgets.Auth('vk_auth', {
+    width: "500px",
+    onAuth: function(data){
+        alert(data)
+    }
+ });
+
+</script>
+
+
+
+<!--    <a href="#" id="vk-login">Aвторизироваться</a>-->
+<!--    <hr>-->
+<!--    <a href="#" id="vk-data">Получить инфу</a>-->
+
+<!--<script type="text/javascript">-->
+<!--  VK.init({-->
+<!--    apiId: 7534643-->
+<!--  });-->
+
+<!--$('a#vk-login').click(function(event){-->
+<!--  event.preventDefault();-->
+<!--  VK.Auth.login(function(response) {-->
+<!--    if (response.session) {-->
+<!--        showAuthData(response.session);-->
+
+<!--        if (response.settings) {-->
+<!--            alert(response.settings);-->
+<!--        }-->
+<!--    } else {-->
+<!--        alert("Пользователь нажал кнопку Отмена в окне авторизации")-->
+<!--    }-->
+<!--    });-->
+<!--});-->
+
+<!--function showAuthData(data) {-->
+<!--    $('body').append('<p>user id: ' + data.user.id +'</p>');-->
+<!--    $('body').append('<p>full name: ' + data.user.first_name + ' ' + data.user.last_name +'</p>');-->
+<!--}-->
+
+<!--$('a#vk-data').click(function(event){-->
+<!--  event.preventDefault();-->
+<!--    VK.Auth.getLoginStatus(function(resp) {-->
+<!--        if (resp.session) {-->
+<!--              $('body').append('<p>Have info</p>');-->
+<!--              $('body').append('<p>user id: ' + resp.session.mid +'</p>');-->
+<!--        } else {-->
+<!--            $('body').append('<p>need to login again</p>');-->
+<!--        }-->
+<!--    });-->
+<!--});-->
+
+<!--</script>-->
+</body>
+
+{% endblock %}

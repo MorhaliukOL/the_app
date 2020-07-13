@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://vk.com/js/api/openapi.js?168" type="text/javascript"></script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
 
@@ -16,6 +18,7 @@
 <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="{% url 'blog' %}">Blog</a></li>
+    <li><a href="{% url 'vk-api' %}">Vk</a></li>
     {% if user.is_authenticated %}
         <li><a href="{% url 'write-post' %}">Write post</a></li>
     {% endif %}
